@@ -12,7 +12,9 @@ public class Light {
 
     // Default constructor that sets the bulb to on, not burnt out, and "white".
     public Light() {
-  /* missing code */
+        on = true;
+        burntOut = false;
+        color = "white";
     }
 
     // This constructor sets the variable "on" to the parameter o. The burntOut
@@ -23,7 +25,16 @@ public class Light {
     // any value other than "red", "green" or "blue", the constructor sets
     // color to "white".
     public Light(boolean o, boolean b, String c) {
-  /* missing code */
+        on = o;
+        burntOut = b;
+
+        c = c.toLowerCase();
+        if (c.equals("red") || c.equals("green") || c.equals("blue")) {
+            color = c;
+        }
+        else {
+            color = "white";
+        }
     }
 
     public static void main(String[] args) {
@@ -167,8 +178,23 @@ public class Light {
     // Notice there is one space between "off"/"on" and the value for color,
     // and a tab before the "burnt out" or "not burnt out".
     public String toString() {
-  /* missing code (don't forget to update the return statement) */
-        return "";
+        String friendlyOn, friendlyBurnt;
+
+        if (on) {
+            friendlyOn = "on";
+        }
+        else {
+            friendlyOn = "off";
+        }
+
+        if (burntOut) {
+            friendlyBurnt = "burnt out";
+        }
+        else {
+            friendlyBurnt = "not burnt out";
+        }
+
+        return String.format("%s %s\t%s", friendlyOn, color, friendlyBurnt);
     }
 
     // Private helper methods
@@ -176,13 +202,20 @@ public class Light {
     // This method changes the bulb from on to off, or visa versa. If the
     // burntOut variable is true, then the on variable may only be set to false.
     public void flip() {
-  /* missing code */
+        if (burntOut) {
+            on = false;
+        }
+        else if (on) {
+            on = false;
+        }
+        else {
+            on = true;
+        }
     }
 
     // The getColor method returns the color of the bulb.
     public String getColor() {
-  /* missing code (don't forget to update the return statement) */
-        return "";
+        return color;
     }
 
     // The setColor method sets the color of the Light. The color variable is
@@ -190,17 +223,22 @@ public class Light {
     // case of the value in c. If c holds any value other than "red", "green"
     // or "blue", color will be set to "white".
     public void setColor(String c) {
-  /* missing code */
+        c = c.toLowerCase();
+        if (c.equals("red") || c.equals("green") || c.equals("blue")) {
+            color = c;
+        }
+        else {
+            color = "white";
+        }
     }
 
     // The isOn method returns true if on, false otherwise.
     public boolean isOn() {
-  /* missing code (don't forget to update the return statement) */
-        return false;
+        return on;
     }
 
     // The burnOut method sets the variable burntOut to true.
     public void burnOut() {
-  /* missing code */
+        burntOut = true;
     }
 }
