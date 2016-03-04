@@ -28,6 +28,10 @@ public class Light {
         on = o;
         burntOut = b;
 
+        if (burntOut) {
+            on = false;
+        }
+
         c = c.toLowerCase();
         if (c.equals("red") || c.equals("green") || c.equals("blue")) {
             color = c;
@@ -240,5 +244,6 @@ public class Light {
     // The burnOut method sets the variable burntOut to true.
     public void burnOut() {
         burntOut = true;
+        on = false;
     }
 }
